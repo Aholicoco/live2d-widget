@@ -2,6 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(npm run:*)"
+    ],
+    "additionalDirectories": [
+      "F:\\XJJ\\VScode\\Project\\my-live2d-models"
     ]
   }
 }
