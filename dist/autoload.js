@@ -5,7 +5,7 @@
 
 // Recommended to use absolute path for live2d_path parameter
 // live2d_path 参数建议使用绝对路径
-const live2d_path = 'https://widget.novoai.top/dist/';
+const live2d_path = 'https://widget.novoai.top/';
 
 // Method to encapsulate asynchronous resource loading
 // 封装异步加载资源的方法
