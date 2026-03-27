@@ -233,6 +233,11 @@ export class AppDelegate extends LAppDelegate {
   /**
    * Create canvas and initialize all Subdelegates
    */
+  initialize() {
+    this.initializeSubdelegates();
+    this.initializeEventListener();
+  }
+
   initializeSubdelegates() {
     // Reserve space to improve performance
     this._canvases.prepareCapacity(LAppDefine.CanvasNum);
