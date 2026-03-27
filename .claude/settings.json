@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(mkdir -p model_sub)",
+      "Bash(mv Pio tia model_sub/)",
+      "Bash(mv model_sub model)",
+      "Bash(mv model/Pio .)",
+      "Bash(mv model/tia .)",
+      "Bash(mv model/model_list.json .)",
+      "Bash(mv model/_headers .)"
     ],
     "additionalDirectories": [
       "F:\\XJJ\\VScode\\Project\\my-live2d-models"
