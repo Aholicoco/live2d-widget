@@ -5,17 +5,33 @@
 
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
+    // Handle CORS preflight
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, HEAD, OPTIONS',
+          'Access-Control-Allow-Headers': '*',
+        },
+      });
+    }
 
-    // 获取请求路径
+    const url = new URL(request.url);
     let path = url.pathname;
 
     // 根路径重定向到 autoload.js
     if (path === '/' || path === '') {
-      return Response.redirect(url.origin + '/autoload.js', 302);
+      return Response.redirect(url.origin + '/dist/autoload.js', 302);
     }
 
     // 从静态资源中获取文件
-    return env.ASSETS.fetch(request);
+    const response = await env.ASSETS.fetch(request);
+
+    // Add CORS headers to response
+    const newResponse = new Response(response.body, response);
+    newResponse.headers.set('Access-Control-Allow-Origin', '*');
+    newResponse.headers.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+
+    return newResponse;
   }
 };
